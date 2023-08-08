@@ -22,7 +22,7 @@ const flash = require("connect-flash");
 const routes = require("./routes");
 // Trabalhar com caminhos
 const path = require("path");
-const helmet = require("helmet");
+// const helmet = require("helmet");
 // Tokens que criamos para o formulário, faz com que nenhum aplicativo externo poste coisas na aplicação
 const csrf = require("csurf");
 const {
@@ -31,7 +31,7 @@ const {
   csrfMiddleware,
 } = require("./src/middlewares/middleware");
 
-app.use(helmet());
+// app.use(helmet());
 
 // Habilita a utilização de formulários na aplicação
 app.use(express.urlencoded({ extended: true }));
