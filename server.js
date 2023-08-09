@@ -67,7 +67,7 @@ app.use(routes);
 // Pega o sinal emitido ao conectar no banco de dados e diz o que deve ser feito ao final da conexão
 app.on("pronto", () => {
   app.listen(3000, () => {
-    console.log("Acessar http://localhost:3000");
+    console.log("Acessar http://localhost:3000/");
     console.log("Servidor executando na porta 3000");
   });
 });
