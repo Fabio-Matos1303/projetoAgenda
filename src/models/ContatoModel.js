@@ -44,11 +44,19 @@ Contato.prototype.cleanUp = function () {
         telefone: this.body.telefone,
     }
 }
+Contato.prototype.edit = async function (id) {
+    if (typeof id !== 'string') return;
+    this.valida();
+    if (this.errors.length > 0) return;
+    this.contato = await ContatoModel.findByIdAndUpdate(id, this.body, { new: true })
+}
 
+// Métodos estáticos
 Contato.buscaPorId = async function (id) {
     if (typeof id !== 'string') return;
     const contato = await ContatoModel.findById(id);
     return contato;
 }
+
 
 module.exports = Contato;
