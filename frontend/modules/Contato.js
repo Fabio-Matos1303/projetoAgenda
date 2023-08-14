@@ -1,9 +1,9 @@
 import validator from 'validator';
 
-export default class Login {
+export default class Cadastro {
     constructor(formClass) {
         this.form = document.querySelector(formClass)
-        this.errors = []
+        this.errors = [];
     }
 
     init() {
@@ -13,7 +13,7 @@ export default class Login {
     events() {
         if (!this.form) return;
         this.form.addEventListener('submit', e => {
-            e.preventDefault()
+            e.preventDefault();
             this.validate(e);
         })
     }
@@ -21,15 +21,16 @@ export default class Login {
     validate(e) {
         const el = e.target;
         const emailInput = el.querySelector('input[name="email"]')
-        const passwordInput = el.querySelector('input[name="password"]')
+        const telefoneInput = el.querySelector('input[name="telefone"]')
+
+        if (telefoneInput.value === '' && emailInput.value === '') {
+            this.errors.push('Necessário cadastrar pelo menos um contato: E-mail ou telefone');
+        }
 
         if (!validator.isEmail(emailInput.value)) {
-            this.errors.push('E-mail inválido!');
-        }
+            this.errors.push('E-mail inválido');
+        };
 
-        if (passwordInput.value.length < 5 || passwordInput.value.length > 11) {
-            this.errors.push('A senha deve ter entre 6 e 12 caracteres');
-        }
 
         if (this.errors.length > 0) {
             alert(this.errors.join('\n'))
